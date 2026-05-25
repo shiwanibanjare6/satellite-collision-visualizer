@@ -180,36 +180,6 @@ Backend runs on:
 
 ```text
 http://127.0.0.1:5000
-```
-
----
-
-# 🌐 API Endpoints
-
-## Health Check
-
-```http
-GET /api/health
-```
-
-## Satellite Telemetry
-
-```http
-GET /api/satellites
-```
-
-## Collision Prediction
-
-```http
-POST /api/predict
-```
-
-## AI Maneuver Recommendation
-
-```http
-POST /api/recommendation
-```
-
 ---
 
 # 💻 Frontend Setup
@@ -240,18 +210,6 @@ GROQ_API_KEY=your_api_key_here
 
 ---
 
-# 🔭 Future Improvements
-
-- Real trained ML congestion models
-- Time-based future orbit simulation
-- Debris tracking system
-- Satellite category filtering
-- Historical collision database
-- Autonomous maneuver simulation
-- Space weather integration
-
----
-
 # 📌 Research & Educational Value
 
 This project demonstrates:
@@ -263,15 +221,5 @@ This project demonstrates:
 - intelligent aerospace dashboards
 
 and serves as a practical exploration of modern space traffic management systems.
-
----
-
-# 👨‍💻 Author
-
-Shiwani Banjare  
-B.Tech — Data Science & Artificial Intelligence  
-IIIT Naya Raipur
-
----
 
 # ⭐ If you found this project interesting, consider starring the repository.
