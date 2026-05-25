@@ -222,4 +222,3 @@ This project demonstrates:
 
 and serves as a practical exploration of modern space traffic management systems.
 
-# ⭐ If you found this project interesting, consider starring the repository.
