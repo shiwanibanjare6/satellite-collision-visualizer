@@ -1,32 +1,152 @@
-# Satellite Collision Visualizer
+# 🚀 AI-Powered Satellite Collision & Orbital Congestion Visualizer
 
-This project is structured as a clean student-friendly full-stack application:
+An intelligent real-time orbital monitoring platform that visualizes satellites around Earth, predicts orbital congestion, detects collision risks, and generates AI-assisted maneuver recommendations.
 
-- `frontend/`: React + Vite + Three.js + React Three Fiber + Tailwind CSS
-- `backend/`: Flask API + live CelesTrak TLE fetch + collision scoring + ML integration point
+Built using:
+- React + Three.js for immersive 3D visualization
+- Flask backend for orbital analytics
+- AI/ML-based congestion prediction
+- Real orbital telemetry from CelesTrak
+- LLM-powered maneuver recommendation engine
 
-## Project features
+---
 
-- 3D rotating Earth
-- Live satellite rendering using TLE data
-- Orbit path generation from `satellite.js`
-- Collision distance analysis
-- Risk highlighting and warning lines
-- Dashboard metrics and charts
-- Separate backend endpoint for ML prediction
+# 🌍 Project Overview
 
-## Folder structure
+With thousands of active satellites orbiting Earth, orbital congestion and collision risk have become major concerns for future space missions.
+
+This project simulates an AI-assisted orbital traffic monitoring system capable of:
+
+- Tracking satellites in real time
+- Detecting congested orbital regions
+- Predicting potential collision threats
+- Visualizing orbital traffic in 3D
+- Generating AI-based maneuver recommendations
+
+The system combines:
+- orbital mechanics,
+- congestion analytics,
+- telemetry monitoring,
+- collision-risk analysis,
+- and AI-assisted decision support.
+
+---
+
+# ✨ Features
+
+## 🌎 Real-Time 3D Earth Visualization
+- Interactive Earth rendered using Three.js
+- Live orbit rendering for LEO, MEO, and GEO satellites
+- Dynamic satellite motion and orbital paths
+
+## 🛰 Satellite Traffic Monitoring
+- Real-time orbital telemetry
+- Satellite inspection dashboard
+- Orbit classification (LEO / MEO / GEO)
+
+## ⚠ Orbital Congestion Detection
+- Congestion zone analysis
+- Local orbital density estimation
+- Congestion classification system:
+  - Class 0 → Low
+  - Class 1 → Medium
+  - Class 2 → High
+
+## ☄ Collision Risk Prediction
+- Euclidean close-approach analysis
+- Pairwise collision-risk estimation
+- Threat visualization using danger channels
+
+## 🤖 AI-Assisted Maneuver Recommendations
+- LLM-based orbital maneuver suggestions
+- AI telemetry analysis for risky satellites
+- Autonomous orbital monitoring assistance
+
+## 📊 Analytics Dashboard
+- Threat timeline
+- Orbital congestion map
+- Collision intelligence panel
+- Satellite telemetry monitoring
+
+---
+
+# 🧠 System Architecture
+
+```text
+Satellite Dataset / TLE Feed
+            ↓
+Orbital Data Processing
+            ↓
+Congestion Prediction Model
+            ↓
+Collision Risk Analysis
+            ↓
+Danger Satellite Detection
+            ↓
+AI Recommendation Engine
+            ↓
+3D Visualization Dashboard
+```
+
+---
+
+# 🛰 How Congestion Detection Works
+
+The backend analyzes:
+- altitude
+- orbital inclination
+- eccentricity
+- velocity
+- mean motion
+- nearby satellite density
+
+These parameters are passed into a congestion prediction pipeline which assigns:
+- congestion score
+- congestion class
+- orbital threat level
+
+High-risk satellites are highlighted visually and monitored through the telemetry dashboard.
+
+---
+
+# 🧩 Tech Stack
+
+## Frontend
+- React.js
+- Vite
+- Three.js
+- React Three Fiber
+- Tailwind CSS
+- Framer Motion
+- Chart.js
+
+## Backend
+- Flask
+- Python
+- satellite.js
+- Orbital telemetry processing
+
+## AI / ML
+- Congestion prediction system
+- Collision-risk analysis engine
+- Groq LLM integration for maneuver recommendations
+
+---
+
+# 📁 Project Structure
 
 ```text
 6th-sem/
 ├── backend/
 │   ├── app.py
 │   ├── ml/
+│   │   ├── congestion_model.py
 │   │   └── risk_model.py
 │   ├── services/
 │   │   ├── celestrak.py
 │   │   └── collision.py
 │   └── requirements.txt
+│
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -34,82 +154,124 @@ This project is structured as a clean student-friendly full-stack application:
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.js
+│   ├── vite.config.js
+│   └── tailwind.config.js
+│
 └── README.md
 ```
 
-## How the architecture works
+---
 
-1. The backend fetches TLE satellite data from CelesTrak.
-2. The backend converts the latest orbit state into latitude, longitude, altitude, velocity, and ECI coordinates.
-3. The backend checks every satellite pair using Euclidean distance in 3D space.
-4. The backend assigns a risk score using a replaceable ML-style model.
-5. The frontend requests `/api/satellites`, renders Earth in 3D, draws close-approach lines, and shows live stats.
-
-## Backend setup
+# ⚙ Backend Setup
 
 ```bash
 cd backend
+
 python -m venv .venv
+
 .venv\Scripts\activate
+
 pip install -r requirements.txt
+
 python app.py
 ```
 
-The API runs at `http://127.0.0.1:5000`.
+Backend runs on:
 
-Endpoints:
-
-- `GET /api/health`
-- `GET /api/satellites`
-- `POST /api/predict`
-
-Example prediction payload:
-
-```json
-{
-  "satellite1": { "altitude": 420, "velocity": 7.66, "distance_km": 900 },
-  "satellite2": { "altitude": 538, "velocity": 7.59, "distance_km": 900 }
-}
+```text
+http://127.0.0.1:5000
 ```
 
-## Frontend setup
+---
+
+# 🌐 API Endpoints
+
+## Health Check
+
+```http
+GET /api/health
+```
+
+## Satellite Telemetry
+
+```http
+GET /api/satellites
+```
+
+## Collision Prediction
+
+```http
+POST /api/predict
+```
+
+## AI Maneuver Recommendation
+
+```http
+POST /api/recommendation
+```
+
+---
+
+# 💻 Frontend Setup
 
 ```bash
-
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-The frontend runs at `http://127.0.0.1:5173`.
+Frontend runs on:
 
-If `npm install` fails on this Windows machine because of SSL certificate verification, use:
-
-```bash
-npm config set strict-ssl false
-npm install
+```text
+http://127.0.0.1:5173
 ```
 
-If you want, switch it back later with:
+---
 
-```bash
-npm config set strict-ssl true
+# 🔑 Environment Variables
+
+Example backend `.env`
+
+```env
+GROQ_API_KEY=your_api_key_here
 ```
 
-Optional `.env` for frontend:
+---
 
-```bash
-VITE_API_BASE_URL=http://127.0.0.1:5000/api
-```
+# 🔭 Future Improvements
 
-> The system uses real-time TLE orbital data from CelesTrak to visualize satellites in 3D space. Orbital paths are generated in the frontend using `satellite.js`, while the backend computes Euclidean close-approach distance and produces collision risk scores through an ML-ready prediction module.
+- Real trained ML congestion models
+- Time-based future orbit simulation
+- Debris tracking system
+- Satellite category filtering
+- Historical collision database
+- Autonomous maneuver simulation
+- Space weather integration
 
-## Next extensions
+---
 
-- Replace the heuristic risk model with your trained ML model
-- Add filters for satellite groups
-- Add time-slider based future orbit simulation
-- Add satellite search and categories
-- Store close-approach history in a database
+# 📌 Research & Educational Value
+
+This project demonstrates:
+- orbital analytics
+- AI-assisted monitoring
+- congestion prediction
+- telemetry visualization
+- collision-risk estimation
+- intelligent aerospace dashboards
+
+and serves as a practical exploration of modern space traffic management systems.
+
+---
+
+# 👨‍💻 Author
+
+Shiwani Banjare  
+B.Tech — Data Science & Artificial Intelligence  
+IIIT Naya Raipur
+
+---
+
+# ⭐ If you found this project interesting, consider starring the repository.
